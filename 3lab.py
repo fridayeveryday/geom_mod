@@ -1,19 +1,24 @@
 # https://encode-decode.com/uuencode-decode-online/
+
 import os
 
 path = "C://Temp/gm.txt"
 out_path = "C://Temp/UUE.txt"
+
 
 def to_UUE(bin_list):
     concated_str = [str(elem) for elem in bin_list]
     concated_str = "".join(concated_str)
     quad_symb_of_UUE = ""
     for i in range(4):
-        first = int(concated_str[0:6], 2) + 32
-        sec = int(concated_str[6:12], 2) + 32
-        third = int(concated_str[12:18], 2) + 32
-        fouth = int(concated_str[18:24], 2) + 32
-        quad_symb_of_UUE += (chr(int(concated_str[i * 6:(i + 1) * 6], 2) + 32))
+        # first = int(concated_str[0:6], 2) + 32
+        # sec = int(concated_str[6:12], 2) + 32
+        # third = int(concated_str[12:18], 2) + 32
+        # fouth = int(concated_str[18:24], 2) + 32
+        one_sym = chr(int(concated_str[i * 6:(i + 1) * 6], 2) + 32)
+        if one_sym == ' ':
+            one_sym = '`'
+        quad_symb_of_UUE += one_sym
     return quad_symb_of_UUE
 
 
@@ -31,7 +36,7 @@ def main():
     size = os.stat(path).st_size
     remains = size % 3
     if remains > 0:
-        adding_str = ' ' * (3 - remains) #'`'
+        adding_str = ' ' * (3 - remains)  # '`'
         file.write(adding_str)
     file.close()
     results = []
