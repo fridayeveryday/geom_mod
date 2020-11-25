@@ -1,4 +1,4 @@
-# This is a sample Python script.
+# https://encode-decode.com/uuencode-decode-online/
 import os
 
 path = "C://Temp/gm.txt"
