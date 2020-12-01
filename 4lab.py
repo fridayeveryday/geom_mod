@@ -31,6 +31,7 @@ def computeCode(x, y):
         return TOP
     return INSIDE
 
+
 # Реализация алгоритма Коэна-Сазерленда
 
 def cohen_sutherland_cut(x1, y1, x2, y2):
@@ -94,13 +95,17 @@ def cohen_sutherland_cut(x1, y1, x2, y2):
 if __name__ == '__main__':
     print("Введите последовательно границы прямоугольника x_min, x_max, y_min, y_max")
     x_min, x_max, y_min, y_max = map(int, input().split(" "))
-    # P11 = (5, 5), P12 = (7, 7)
-    cohen_sutherland_cut(5, 5, 7, 7)
 
-    # Второй отрезок
-    # P21 = (7, 9), P22 = (11, 4)
-    cohen_sutherland_cut(7, 9, 11, 4)
-
-    # Третий линейный сегмент
-    # P31 = (1, 5), P32 = (4, 1)
-    cohen_sutherland_cut(1, 5, 4, 1)
+    print("Введите координаты отрезка x1, y1, x2, y2")
+    x1, y1, x2, y2 = map(int, input().split(" "))
+    cohen_sutherland_cut(x1, y1, x2, y2)
+    # # P11 = (5, 5), P12 = (7, 7)
+    # cohen_sutherland_cut(5, 5, 7, 7)
+    #
+    # # Второй отрезок
+    # # P21 = (7, 9), P22 = (11, 4)
+    # cohen_sutherland_cut(7, 9, 11, 4)
+    #
+    # # Третий линейный сегмент
+    # # P31 = (1, 5), P32 = (4, 1)
+    # cohen_sutherland_cut(1, 5, 4, 1)
