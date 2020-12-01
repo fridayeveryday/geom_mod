@@ -20,7 +20,7 @@ y_min = 4.0
 
 # Функция для вычисления кода региона для точки (x, y)
 
-def computeCode(x, y):
+def compute_сode(x, y):
     if x < x_min:  # слева от прямоугольника
         return LEFT
     elif x > x_max:  # справа от прямоугольника
@@ -36,12 +36,12 @@ def computeCode(x, y):
 
 def cohen_sutherland_cut(x1, y1, x2, y2):
     # Вычислить коды регионов для P1, P2
-    code1 = computeCode(x1, y1)
-    code2 = computeCode(x2, y2)
+    code1 = compute_сode(x1, y1)
+    code2 = compute_сode(x2, y2)
     accept = False
     # y = kx + b
-    k = (y1 - y2) / (x1 - x2)
-    b = y1 - k * x1
+    # k = (y1 - y2) / (x1 - x2)
+    # b = y1 - k * x1
     while True:
         # Если обе конечные точки лежат в прямоугольнике
         if code1 == 0 and code2 == 0:
@@ -62,32 +62,32 @@ def cohen_sutherland_cut(x1, y1, x2, y2):
             if code_out & TOP:
                 # точка находится над прямоугольником клипа
                 y = y_max
-                x = (y - b) / k
+                x = ((y - y1) * (x2 - x1)) / (y2 - y1) + x1
             elif code_out & BOTTOM:
                 # точка находится ниже прямоугольника клипа
                 y = y_min
-                x = (y - b) / k
+                x = ((y - y1) * (x2 - x1)) / (y2 - y1) + x1
             elif code_out & RIGHT:
                 # точка находится справа от прямоугольника клипа
                 x = x_max
-                y = k * x + b
+                y = ((y2 - y1)(x - x1)) / (x2 - x1) + y1
             elif code_out & LEFT:
                 # точка находится слева от прямоугольника клипа
                 x = x_min
-                y = k * x + b
+                y = ((y2 - y1)(x - x1)) / (x2 - x1) + y1
         # Теперь точка пересечения x, y найдена
         # Заменим точку за пределами отсечения прямоугольника
         # по точке пересечения
         if code_out == code1:
             x1 = x
             y1 = y
-            code1 = computeCode(x1, y1)
+            code1 = compute_сode(x1, y1)
         else:
             x2 = x
             y2 = y
-            code2 = computeCode(x2, y2)
+            code2 = compute_сode(x2, y2)
     if accept:
-        print("Отрезок будет нарисован от %.2f,%.2f до %.2f,%.2f" % (x1, y1, x2, y2))
+        print("Отрезок будет нарисован от %.2f; %.2f до %.2f; %.2f" % (x1, y1, x2, y2))
     else:
         print("Отрезок вне зоны видимости")
 
