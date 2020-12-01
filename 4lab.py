@@ -1,13 +1,9 @@
 # Определение кодов регионов
 
 INSIDE = 0  # 0000
-
 LEFT = 1  # 0001
-
 RIGHT = 2  # 0010
-
 BOTTOM = 4  # 0100
-
 TOP = 8  # 1000
 
 # Определение x_max, y_max и x_min, y_min для прямоугольника
@@ -96,13 +92,15 @@ def cohen_sutherland_cut(x1, y1, x2, y2):
 
 
 if __name__ == '__main__':
+    print("Введите последовательно границы прямоугольника x_min, x_max, y_min, y_max")
+    x_min, x_max, y_min, y_max = map(int, input().split(" "))
     # P11 = (5, 5), P12 = (7, 7)
     cohen_sutherland_cut(5, 5, 7, 7)
 
     # Второй отрезок
     # P21 = (7, 9), P22 = (11, 4)
     cohen_sutherland_cut(7, 9, 11, 4)
-    
+
     # Третий линейный сегмент
     # P31 = (1, 5), P32 = (4, 1)
     cohen_sutherland_cut(1, 5, 4, 1)
